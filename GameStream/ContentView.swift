@@ -82,10 +82,41 @@ struct LoginView: View {
                     .foregroundStyle(Color("Dark-Cian"))
                     .padding(.bottom)
                 
-                Button(action: login, label: <#T##() -> Label#>)
+                Button(action: loginAction, label: {
+                    Text("INICIAR SESION")
+                        .fontWeight(.bold)
+                        .foregroundStyle(.white)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .padding(EdgeInsets(top: 11, leading: 18, bottom: 11, trailing: 18))
+                        .overlay(RoundedRectangle(cornerRadius: 6.0)
+                            .stroke(Color("Dark-Cian"),lineWidth: 1.0).shadow(color: .white,radius: 6))
+                })
+                Spacer()
+            }
+            Text("Login with social media").foregroundStyle(.white).padding(.top, 80).padding(.bottom, 25)
+            HStack{
+                Spacer()
+                Text("Facebook")
+                    .foregroundStyle(.white)
+                    .padding(EdgeInsets(top: 10, leading: 18, bottom: 10, trailing: 18))
+                    .background(Color("Blue-Gray"))
+                    .cornerRadius(6.0)
+                    .fontWeight(.bold)
+                Spacer()
+                Text("Twitter")
+                    .foregroundStyle(.white)
+                    .padding(EdgeInsets(top: 10, leading: 18, bottom: 10, trailing: 18))
+                    .background(Color("Blue-Gray"))
+                    .cornerRadius(6.0)
+                    .fontWeight(.bold)
+                Spacer()
             }
         }.padding(.horizontal, 77)
     }
+}
+
+func loginAction() {
+    print("Estoy iniciando sesion   ")
 }
 
 struct SigninView:View {
