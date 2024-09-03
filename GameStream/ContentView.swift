@@ -22,7 +22,7 @@ struct ContentView: View {
 
 struct StartAndRegisterView: View {
     
-    @State var typeLogin = true
+    @State var typeLogin = false
     
     var body: some View{
         VStack{
@@ -83,7 +83,7 @@ struct LoginView: View {
                     .padding(.bottom)
                 
                 Button(action: loginAction, label: {
-                    Text("INICIAR SESION")
+                    Text("LOG IN")
                         .fontWeight(.bold)
                         .foregroundStyle(.white)
                         .frame(maxWidth: .infinity, alignment: .center)
@@ -120,9 +120,107 @@ func loginAction() {
 }
 
 struct SigninView:View {
+    @State var mail = ""
+    @State var password = ""
+    @State var repeatPassword = ""
     var body: some View {
-        Text("Im signinView")
+        ScrollView{
+            VStack(alignment: .center){
+                Text("Select profile image")
+                    .fontWeight(.bold)
+                    .foregroundStyle(.white)
+                Text("You can change or choose them later")
+                    .font(.footnote)
+                    .fontWeight(.light)
+                    .foregroundStyle(.gray)
+                    .padding(.bottom)
+                Button(action: takePhoto, label: {
+                    ZStack{
+                        Image("perfil")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 80, height: 80)
+                        Image(systemName: "camera")
+                            .foregroundStyle(.white)
+                    }
+                }).padding(.bottom)
+                    
+            }
+            VStack(alignment: .leading){
+                Text("Mail").foregroundStyle(Color("Dark-Cian"))
+                ZStack(alignment: .leading){
+                    if mail.isEmpty {
+                        Text(verbatim: "example@gmail.com").font(.caption).foregroundStyle(.gray)
+                        
+                    }
+                    TextField("", text: $mail)
+                    
+                }
+                Divider().frame(height: 1).background(Color("Dark-Cian")).padding(.bottom)
+                VStack(alignment: .leading) {
+                    Text("Password").foregroundStyle(.white)
+                    ZStack(alignment: .leading) {
+                        if password.isEmpty {
+                            Text("*******").font(.caption).foregroundStyle(.gray)
+                        }
+                        SecureField("", text: $password)
+                    }
+                    
+                }
+                Divider().frame(width: 300, height: 1).background(.white).padding(.bottom)
+                
+                VStack(alignment: .leading) {
+                    Text("Repeat password").foregroundStyle(.white)
+                    ZStack(alignment: .leading) {
+                        if repeatPassword.isEmpty {
+                            Text("*******").font(.caption).foregroundStyle(.gray)
+                        }
+                        SecureField("", text: $password)
+                    }
+                    
+                }
+                Divider().frame(width: 300, height: 1).background(.white).padding(.bottom)
+                
+                
+                Button(action: registerAction, label: {
+                    Text("REGISTER")
+                        .fontWeight(.bold)
+                        .foregroundStyle(.white)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .padding(EdgeInsets(top: 11, leading: 18, bottom: 11, trailing: 18))
+                        .overlay(RoundedRectangle(cornerRadius: 6.0)
+                            .stroke(Color("Dark-Cian"),lineWidth: 1.0).shadow(color: .white,radius: 6))
+                })
+            }
+            Text("Register with social media").foregroundStyle(.white).padding(.top, 80).padding(.bottom, 25)
+            HStack{
+                Spacer()
+                Text("Facebook")
+                    .foregroundStyle(.white)
+                    .padding(EdgeInsets(top: 10, leading: 18, bottom: 10, trailing: 18))
+                    .background(Color("Blue-Gray"))
+                    .cornerRadius(6.0)
+                    .fontWeight(.bold)
+                Spacer()
+                Text("Twitter")
+                    .foregroundStyle(.white)
+                    .padding(EdgeInsets(top: 10, leading: 18, bottom: 10, trailing: 18))
+                    .background(Color("Blue-Gray"))
+                    .cornerRadius(6.0)
+                    .fontWeight(.bold)
+                Spacer()
+            }
+            Spacer()
+        }.padding(.horizontal, 77)
     }
+}
+
+func registerAction() {
+    print("Registrate")
+}
+
+func takePhoto() {
+    print("tomar foto action")
 }
 
 #Preview {
