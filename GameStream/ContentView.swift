@@ -33,7 +33,7 @@ struct StartAndRegisterView: View {
                     print("Pantalla inicio sesion")
                 }.foregroundColor(typeLogin ? .white : .gray)
                 Spacer()
-                Button("SIGNIN") {
+                Button("REGISTER") {
                     typeLogin = false
                     print("Pantalla de registro")
                 }.foregroundColor(typeLogin ? .gray : .white)
@@ -192,21 +192,21 @@ struct SigninView:View {
                             .stroke(Color("Dark-Cian"),lineWidth: 1.0).shadow(color: .white,radius: 6))
                 })
             }
-            Text("Register with social media").foregroundStyle(.white).padding(.top, 80).padding(.bottom, 25)
+            Text("Register with social media").foregroundStyle(.white).padding(.top, 20).padding(.bottom, 25)
             HStack{
                 Spacer()
                 Text("Facebook")
                     .foregroundStyle(.white)
                     .padding(EdgeInsets(top: 10, leading: 18, bottom: 10, trailing: 18))
                     .background(Color("Blue-Gray"))
-                    .cornerRadius(6.0)
+                    .cornerRadius(4.0)
                     .fontWeight(.bold)
                 Spacer()
                 Text("Twitter")
                     .foregroundStyle(.white)
                     .padding(EdgeInsets(top: 10, leading: 18, bottom: 10, trailing: 18))
                     .background(Color("Blue-Gray"))
-                    .cornerRadius(6.0)
+                    .cornerRadius(4.0)
                     .fontWeight(.bold)
                 Spacer()
             }
