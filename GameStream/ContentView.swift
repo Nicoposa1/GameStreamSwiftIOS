@@ -22,7 +22,7 @@ struct ContentView: View {
 
 struct StartAndRegisterView: View {
     
-    @State var typeLogin = false
+    @State var typeLogin = true
     
     var body: some View{
         VStack{
