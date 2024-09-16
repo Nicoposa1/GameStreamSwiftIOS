@@ -54,6 +54,7 @@ struct StartAndRegisterView: View {
 struct LoginView: View {
     @State var mail = ""
     @State var password = ""
+    @State var isScreenActive = false
     var body: some View {
         ScrollView{
             VStack(alignment: .leading){
@@ -114,12 +115,22 @@ struct LoginView: View {
                 Spacer()
             }
         }.padding(.horizontal, 77)
+        
+        NavigationLink(value: "Home") {
+            EmptyView()
+        }
+        .navigationDestination(isPresented: $isScreenActive){
+            Home()
+        }
+    }
+    
+    func loginAction() {
+        print("Estoy iniciando sesion")
+        isScreenActive = true
     }
 }
 
-func loginAction() {
-    print("Estoy iniciando sesion   ")
-}
+
 
 struct SigninView:View {
     @State var mail = ""
