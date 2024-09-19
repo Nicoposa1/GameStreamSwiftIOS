@@ -46,13 +46,32 @@ struct Home: View {
 
 
 struct HomeScreen: View {
+    @State var searchText = ""
     var body: some View {
         ZStack{
             Color("Marine").ignoresSafeArea()
             VStack {
-                Image("AppLogo").resizable().aspectRatio(contentMode: .fit).frame(width: 250).padding(.bottom, 40)
+                Image("AppLogo").resizable().aspectRatio(contentMode: .fit).frame(width: 250).padding(.horizontal, 11)
+                HStack{
+                    Button(action: search, label: {
+                        Image(systemName: "magnifyingglass").foregroundStyle(searchText.isEmpty ? Color(.yellow) : Color("Dark-Cian"))
+                    })
+                    ZStack(alignment: .leading){
+                        if searchText.isEmpty{
+                            Text("Buscar un video").foregroundStyle(Color(red: 174/255, green: 177/255, blue: 185/255))
+                        }
+                        TextField("", text: $searchText).foregroundStyle(.white)
+                    }
+                }.padding([.top, .leading, .bottom], 11)
+                    .background(Color("Blue-Gray"))
+                    .clipShape(Capsule()
+                    )
             }.padding(.horizontal, 18)
         }.navigationBarHidden(true).navigationBarBackButtonHidden(true)
+    }
+    
+    func search () {
+        print("El usuario esta buscando \(searchText)")
     }
 }
 
