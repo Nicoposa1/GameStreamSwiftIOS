@@ -50,7 +50,7 @@ struct HomeScreen: View {
         ZStack{
             Color("Marine").ignoresSafeArea()
             VStack {
-                Text("Hola")
+                Image("AppLogo").resizable().aspectRatio(contentMode: .fit).frame(width: 250).padding(.bottom, 40)
             }.padding(.horizontal, 18)
         }.navigationBarHidden(true).navigationBarBackButtonHidden(true)
     }
