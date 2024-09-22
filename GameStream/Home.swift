@@ -30,7 +30,12 @@ struct Home: View {
     }
 
     init() {
-        UITabBar.appearance().backgroundColor = UIColor(Color("colorTab"))
+        let tabBarAppearance = UITabBarAppearance()
+        tabBarAppearance.backgroundColor = UIColor(Color("colorTab"))
+        UITabBar.appearance().standardAppearance = tabBarAppearance
+        UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
+        UITabBar.appearance().tintColor = .white
+        UITabBar.appearance().unselectedItemTintColor = UIColor.gray
     }
 }
 
@@ -114,6 +119,133 @@ struct SubModuleHome: View {
                     .frame(width: 400, height: 300)
             }
         }
+        Text("SUGGESTED CATEGORIES FOR YOU")
+            .font(.title3)
+            .foregroundStyle(.white)
+            .bold()
+            .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+            .padding(.bottom, 12)
+        ScrollView(.horizontal, showsIndicators: false){
+            HStack{
+                Button(action: {print("FPS")}, label:{
+                    ZStack{
+                        RoundedRectangle(cornerRadius: 8)
+                            .fill(Color("Blue-Gray"))
+                            .frame(width: 160, height: 90)
+                        Image("FPS1")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 42, height: 42)
+                    }
+                   
+                })
+                Button(action: {print("RPG")}, label:{
+                    ZStack{
+                        RoundedRectangle(cornerRadius: 8)
+                            .fill(Color("Blue-Gray"))
+                            .frame(width: 160, height: 90)
+                        Image("rpg-icon")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 42, height: 42)
+                    }
+                   
+                })
+                Button(action: {print("OW")}, label:{
+                    ZStack{
+                        RoundedRectangle(cornerRadius: 8)
+                            .fill(Color("Blue-Gray"))
+                            .frame(width: 160, height: 90)
+                        Image("open-world-icon")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 42, height: 42)
+                    }
+                   
+                })
+            }
+        }
+        Text("RECOMMENDED FOR YOU")
+            .font(.title3)
+            .foregroundStyle(.white)
+            .bold()
+            .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+            .padding(.vertical, 12)
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack{
+                Button(action: {
+                    url = urlVideos[1]
+                    print("URL: \(url)")
+                    isPlayerActive = true
+                }, label: {
+                    Image("Abzu")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 240, height: 135)
+                })
+                Button(action: {
+                    url = urlVideos[2]
+                    print("URL: \(url)")
+                    isPlayerActive = true
+                }, label: {
+                    Image("Crash Bandicoot")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 240, height: 135)
+                })
+                Button(action: {
+                    url = urlVideos[3]
+                    print("URL: \(url)")
+                    isPlayerActive = true
+                }, label: {
+                    Image("DEATH STRANDING")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 240, height: 135)
+                })
+            }
+        }
+        Text("VIDEOS YOU MIGHT LIKE")
+            .font(.title3)
+            .foregroundStyle(.white)
+            .bold()
+            .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+            .padding(.vertical, 12)
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack{
+                Button(action: {
+                    url = urlVideos[6]
+                    print("URL: \(url)")
+                    isPlayerActive = true
+                }, label: {
+                    Image("Grand Theft Auto V")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 240, height: 135)
+                })
+                Button(action: {
+                    url = urlVideos[4]
+                    print("URL: \(url)")
+                    isPlayerActive = true
+                }, label: {
+                    Image("Cuphead")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 240, height: 135)
+                })
+                Button(action: {
+                    url = urlVideos[5]
+                    print("URL: \(url)")
+                    isPlayerActive = true
+                }, label: {
+                    Image("Hades")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 240, height: 135)
+                })
+            }
+        }
+        
     }
 }
 
