@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AVKit
 
 struct Home: View {
     @State var selectedTab:Int = 2
@@ -99,11 +100,20 @@ struct SubModuleHome: View {
                 }, label: {
                     VStack(spacing: 0){
                         Image("The Witcher 3").resizable().scaledToFill()
+                        Text("The Witcher 3").frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+                            .background(Color("Blue-Gray"))
                     }
                 })
+                
+                Image(systemName: "play.circle.fill")
+                    .resizable()
+                    .foregroundStyle(.white)
+                    .frame(width: 42, height: 42)
             }.frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: .infinity, alignment: .center)
                 .padding(.vertical)
         }
+        
+        NavigationLink(destination: VideoPlayer(player: AVPlayer(url: URL(string: url)!)), label: <#T##() -> View#>)
     }
 }
 
