@@ -10,7 +10,7 @@ struct Home: View {
                     Image(systemName: "person")
                     Text("Profile")
                 }.tag(0)
-            Text("Pantalla Games").font(.system(size: 30, weight: .bold, design: .rounded))
+            GamesView()
                 .tabItem {
                     Image(systemName: "gamecontroller")
                     Text("Games")
@@ -76,7 +76,7 @@ struct HomeScreen: View {
 
 struct SubModuleHome: View {
     @State var url = "https://cdn.cloudflare.steamstatic.com/steam/apps/256658589/movie480.mp4"
-    @State var isPlayerActive = false
+    @State var isPlayerActive = true
     let urlVideos: [String] = [
         "https://cdn.cloudflare.steamstatic.com/steam/apps/256658589/movie480.mp4",
         "https://cdn.cloudflare.steamstatic.com/steam/apps/256671638/movie480.mp4",
