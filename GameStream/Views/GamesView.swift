@@ -15,10 +15,8 @@ struct GamesView: View {
         NavigationView {
             VStack {
                 if allCharacters.characters.isEmpty {
-                    // Show a loading indicator while data is being fetched
                     ProgressView("Loading characters...")
                 } else {
-                    // Display the list of characters
                     List(allCharacters.characters, id: \.id) { character in
                         HStack {
                             AsyncImage(url: URL(string: character.image)) { image in
