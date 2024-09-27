@@ -10,44 +10,44 @@ import SwiftUI
 struct GamesView: View {
     
     @ObservedObject var allCharacters = ViewModel()
+    @State var characterviewIsActive: Bool = false
+    @State var url:String = ""
+    @State var title:String = ""
+    @State var episode:Int = 0
+    @State var image:String = ""
+    @State var characters: [Character] = []
+    
+    let formatterGrid = [
+        GridItem(.flexible()),
+        GridItem(.flexible())
+    ]
     
     var body: some View {
-        NavigationView {
-            VStack {
-                if allCharacters.characters.isEmpty {
-                    ProgressView("Loading characters...")
-                } else {
-                    List(allCharacters.characters, id: \.id) { character in
-                        HStack {
-                            AsyncImage(url: URL(string: character.image)) { image in
-                                image
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .frame(width: 50, height: 50)
-                                    .clipShape(Circle())
-                            } placeholder: {
-                                ProgressView()
-                            }
-                            
-                            VStack(alignment: .leading) {
-                                Text(character.name)
-                                    .font(.headline)
-                                Text("Species: \(character.species)")
-                                    .font(.subheadline)
-                                Text("Status: \(character.status)")
-                                    .font(.subheadline)
-                            }
-                        }
-                    }
-                }
-            }
-            .navigationBarTitle("Characters")
-            .onAppear {
-                if !allCharacters.characters.isEmpty {
-                    print("First character: \(allCharacters.characters[0].name)")
-                }
-            }
+        
+        
+        ZStack{
+            Color("Marine")
+            VStack{
+                
+                Text("Games")
+                    .font(.title2)
+                    .fontWeight(.bold)
+                    .foregroundStyle(.white)
+                    .padding(.top, 10)
+                
+            }.padding(.horizontal, 6)
         }
+        
+        
+        Text("Hello, World!")
+        .onAppear {
+                self.allCharacters.fetchData()
+            }
+        
+        VStack {
+            
+        }
+ 
     }
 }
 
